@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NdanAthar - Professional Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+  
+  <div id="splash-screen">
+        <div class="splash-content">
+            <img src="../assets/logo2.png" alt="Logo" class="splash-logo">
+            <h1 class="splash-name">NdanAthar</h1>
+        </div>
+        
+        <div class="splash-version">© 2026 <b>NdanAthar</b> hak cipta di lindungi</div>
+    </div>
+
+    <nav class="top-nav">
+        <button class="btn-icon" id="backBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Back</span>
+        </button>
+        
+        <button class="btn-icon" id="themeToggle">
+            <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <span class="mode-text">Dark Mode</span>
+        </button>
+    </nav>
+
+<main class="gallery-container">  
+    <div class="gallery-grid">  
+
+    <div class="card">  
+        <div class="card-image">  
+            <img src="1.jpg" alt="Tech Setup" class="zoomable">  
+            <div class="card-tag">Premium</div>  
+        </div>  
+        <div class="card-content">  
+            <h3>Porak Esport MLBB</h3>  
+            <p class="owner">By <span>SMKN 1 Bojong</span></p>  
+            <div class="card-footer">  
+                <span class="price">2025</span>  
+            </div>  
+        </div>  
+    </div>  
+
+    <div class="card">  
+        <div class="card-image">  
+            <img src="2.jpeg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Menu Food</h3>  
+            <p class="owner">By <span>WarunkCekWahyu</span></p>  
+            <div class="card-footer">  
+                <span class="price">2026</span>  
+            </div>  
+        </div>  
+    </div>  
+
+    <div class="card">  
+        <div class="card-image">  
+            <img src="4.jpg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Goguma Milk</h3>  
+            <p class="owner">By <span>Warung Dinda</span></p>  
+            <div class="card-footer">  
+                <span class="price">2026</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="card">  
+        <div class="card-image">  
+            <img src="5.jpg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Ziarah Keliling</h3>  
+            <p class="owner">By <span>Miftahul Huda</span></p>  
+            <div class="card-footer">  
+                <span class="price">2026</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="card">  
+        <div class="card-image">  
+            <img src="6.jpg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Caption x AI</h3>  
+            <p class="owner">By <span>Ndan Athar</span></p>  
+            <div class="card-footer">  
+                <span class="price">2026</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="card">  
+        <div class="card-image">  
+            <img src="7.jpg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Hari Bakti</h3>  
+            <p class="owner">By <span>Miftahul Huda</span></p>  
+            <div class="card-footer">  
+                <span class="price">2026</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="card">  
+        <div class="card-image">  
+            <img src="8.jpeg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Menu Food</h3>  
+            <p class="owner">By <span>Demoon</span></p>  
+            <div class="card-footer">  
+                <span class="price">2025</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="card">  
+        <div class="card-image">  
+            <img src="9.jpg" alt="Minimalist Code" class="zoomable">  
+        </div>  
+        <div class="card-content">  
+            <h3>Travelling</h3>  
+            <p class="owner">By <span>Liceria & Co</span></p>  
+            <div class="card-footer">  
+                <span class="price">2025</span>  
+            </div>  
+        </div>  
+    </div>  
+
+</div>
+</main>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgFull">
+        <div id="caption"></div>
+    </div>
+
+<footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="copyright-info">
+                <p>&copy; 2026 <span>NdanAthar</span>. Hak Cipta Dilindungi.</p>
+                <p class="footer-subtext">Didesain dengan presisi untuk pengalaman digital terbaik.</p>
+            </div>
+            
+            <div class="footer-meta">
+                <span class="version-tag">Build v2.1.0</span>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="script.js"></script>
+</body>
+</html>

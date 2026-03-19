@@ -1,0 +1,327 @@
+/* ========================================= */
+/* 1. VARIABEL & RESET                       */
+/* ========================================= */
+:root {
+    --bg-color: #f5f5f7;
+    --text-main: #1d1d1f;
+    --card-bg: #ffffff;
+    --glass: rgba(255, 255, 255, 0.7);
+    --accent: #0071e3;
+}
+
+[data-theme="dark"] {
+    --bg-color: #000000;
+    --text-main: #f5f5f7;
+    --card-bg: #1c1c1e;
+    --glass: rgba(28, 28, 30, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-top: 55px; /* Jarak untuk Navigasi */
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
+
+/* ========================================= */
+/* 2. NAVIGASI (GLASS EFFECT)                */
+/* ========================================= */
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.btn-icon:hover {
+    background: rgba(120, 120, 128, 0.1);
+}
+
+/* ========================================= */
+/* 3. MASONRY LAYOUT (NO GAPS)               */
+/* ========================================= */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.masonry-wrapper {
+    column-count: 2; /* Default Mobile & Tablet */
+    column-gap: 15px;
+    width: 100%;
+    orphans: 1;
+    widows: 1;
+}
+
+.brick {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    break-inside: avoid-column;
+    -webkit-column-break-inside: avoid;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card-bg);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.brick:hover {
+    transform: scale(1.02);
+}
+
+.brick img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    cursor: zoom-in;
+    content-visibility: auto;
+}
+
+/* Rasio Gambar */
+.brick.portrait img { aspect-ratio: 3 / 4; }
+.brick.square img { aspect-ratio: 1 / 1; }
+
+/* ========================================= */
+/* 4. MODAL ZOOM (ADVANCED BLUR)             */
+/* ========================================= */
+.modal {
+    display: none; /* Diubah jadi 'flex' oleh JS */
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: 200;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+/* ========================================= */
+/* 5. SPLASH SCREEN                          */
+/* ========================================= */
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+[data-theme="dark"] #splash-screen { background-color: #000000; }
+
+.splash-content {
+    text-align: center;
+    opacity: 0;
+    animation: fInScale 0.8s ease forwards;
+}
+
+.splash-logo { width: 80px; margin-bottom: 20px; }
+[data-theme="dark"] .splash-logo { filter: invert(1); }
+
+.splash-name { font-size: 2rem; font-weight: 700; }
+.splash-version { position: absolute; bottom: 30px; font-size: 0.8rem; color: #86868b; }
+
+@keyframes fInScale {
+    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; transform: scale(0.9); }
+}
+
+/* ========================================= */
+/* 6. RESPONSIVE (MEDIA QUERIES)             */
+/* ========================================= */
+
+/* Desktop / Layar Lebar */
+@media (min-width: 1024px) {
+    .masonry-wrapper {
+        column-count: 3; /* 3 Kolom agar lebih mewah */
+        column-gap: 20px;
+    }
+    .brick { margin-bottom: 20px; }
+}
+
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 601px) {
+    .masonry-wrapper {
+        column-count: 2;
+    }
+}
+
+/* HP Standar */
+@media (max-width: 600px) {
+    .masonry-wrapper {
+        column-count: 2; /* Tetap 2 kolom agar tidak terlalu besar */
+        column-gap: 10px;
+    }
+    .brick { margin-bottom: 10px; border-radius: 12px; }
+    .top-nav { height: 60px; }
+    body { padding-top: 70px; }
+}
+
+/* HP Kecil */
+@media (max-width: 380px) {
+    .masonry-wrapper {
+        column-count: 1; /* 1 Kolom saja supaya gambar terbaca */
+    }
+}
+
+
+.footer-section {
+    padding: 10px 20px; /* Jarak atas bawah yang pas */
+    margin-top: -10px; /* Memberi jarak dari section sebelumnya */
+    border-top: 1px solid var(--card-border);
+    background: var(--bg);
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Membuat teks sejajar di bawah */
+    gap: 20px;
+}
+
+.copyright-info p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.copyright-info span {
+    color: var(--primary); /* Memberi warna pada namamu */
+}
+
+.footer-subtext {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+/* Bagian Kanan Footer */
+.footer-meta {
+    text-align: right;
+}
+
+.version-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: var(--card-border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.footer-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* Responsive untuk HP */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .footer-meta {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
+}
+
